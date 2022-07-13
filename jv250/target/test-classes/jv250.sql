@@ -13,8 +13,10 @@ SELECT * FROM Sample10;
 INSERT INTO Sample10 VALUES (1, '유비', '1996-10-25', '대구 중구 반월당');
 INSERT INTO Sample10 VALUES (2, '관우', '1996-11-25', '대구 중구 반월당2');
 INSERT INTO Sample10 VALUES (3, '장비', '1996-12-25', '대구 중구 반월당3');
+
 --(자바)가나다"마바"사 -> (SQL)"가나다\"마바\"사"
 --(자바)Tom's house -> (SQL)'Toms''s house'
+
 DELETE FROM Sample10 WHERE name = "관우";
 
 
@@ -89,6 +91,7 @@ CREATE TABLE User2 (
 	email1	    VARCHAR(14)		NOT NULL,
 	regDate		TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
 )
+
 SELECT * FROM User2;
 DROP TABLE User2;
-DELETE FROM User2 WHERE username = '자바1';
+DELETE FROM User2 WHERE username = '??';
