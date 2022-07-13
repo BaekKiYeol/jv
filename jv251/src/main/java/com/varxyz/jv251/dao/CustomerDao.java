@@ -17,7 +17,7 @@ public class CustomerDao {
 	 */
 	public List<Customer> findAllCustomers() {
 		String sql = "SELECT * FROM Customer";
-		List<Customer> customerList = new ArrayList<>();
+		List<Customer> customerList = new ArrayList<Customer>();
 		
 		try {
 			Connection con = null;
