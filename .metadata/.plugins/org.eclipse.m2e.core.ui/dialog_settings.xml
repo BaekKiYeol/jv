@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\NCS\eclipse-workspace\jvx330"/>
 			<item value="C:\NCS\eclipse-workspace"/>
 		</list>
 		<list key="projectNameTemplate">
