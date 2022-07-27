@@ -12,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Customer {
-	private long cid;
+	private String userId;
 	private String email;
 	private String passwd;
 	private String name;
@@ -24,7 +24,7 @@ public class Customer {
 		super();
 	}
 	
-	public Customer(long cid) {
-		this.cid = cid;
+	public Customer(String userId) {
+		this.userId = userId;
 	}
 }

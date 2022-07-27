@@ -20,9 +20,13 @@
 			<option value="농협">우리</option>
 			<option value="농협">기업</option>
 		</select>
-		<input type="text" name="account" required="required"><br>
+		<input type="text" name="accountNum" required="required">
+		<select name = "accountType">
+			<option value="S">Saving</option>
+			<option value="C">Checking</option>
+		</select><br>
 		
-		<input type="submit" value="생성"/>
+		<input type="submit" value="계좌생성"/>
 	</form>
 	
 </body>

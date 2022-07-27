@@ -9,12 +9,12 @@
 </head>
 <body>
 
-	<h3>회원가입 성공</h3>
-	<label>E-mail : </label>${customerCommand.email}<br>
-	<label>비밀번호 : </label>${customerCommand.passwd}<br>
-	<label>이름 : </label>${customerCommand.name}<br>
-	<label>주민번호 : </label>${customerCommand.ssn}<br>
-	<label>연락처 : </label>${customerCommand.phone}<br>
+	<h3>계좌생성 성공</h3>
+	<ul>
+	   	<li>유저 ID : ${account.userId}</li>
+	   	<li>계좌번호 : ${account.accountNum}</li>
+	   	<li>계좌종류 : ${account.accountType}</li>
+	</ul>
 	
 </body>
 </html>

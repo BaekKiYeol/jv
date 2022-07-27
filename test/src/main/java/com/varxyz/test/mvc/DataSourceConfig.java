@@ -2,15 +2,17 @@ package com.varxyz.test.mvc;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+import com.varxyz.test.mvc.Account.AccountDao;
 import com.varxyz.test.mvc.Customer.CustomerDao;
-import com.varxyz.test.mvc.addAccount.AccountDao;
-import com.varxyz.test.mvc.addCustomer.AddCustomerDataSourceDao;
-import com.varxyz.test.mvc.addCustomer.AddCustomerDao;
+
 
 @Configuration
+//@ComponentScan(basePackages = "com.varxyz.test.mvc.Controller") -- 폴더 안에 넣으려면 이렇게
+@ComponentScan(basePackageClasses = {CustomerDao.class, AccountDao.class}) //빈 안쓰면 요걸로
 public class DataSourceConfig {
 	
 	@Bean(destroyMethod = "close")
@@ -26,28 +28,14 @@ public class DataSourceConfig {
 		return ds;
 	}
 	
-	@Bean
-	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(dataSource());
-	}
+//	@Bean
+//	public CustomerDao customerDao() {
+//		return new CustomerDao(dataSource()); // 같은 경로가 아닐 경우
+//	}
+//	
+//	@Bean
+//	public AccountDao accountDao() {
+//		return new AccountDao(dataSource());
+//	}
 	
-	@Bean
-	public AddCustomerDataSourceDao addCustomerDataSourceDao() {
-		return new AddCustomerDataSourceDao(dataSource());
-	}
-	
-	@Bean
-	public AddCustomerDao addCustomerDao() {
-		return new AddCustomerDao(dataSource());
-	}
-	
-	@Bean
-	public CustomerDao customerDao() {
-		return new CustomerDao(dataSource());
-	}
-	
-	@Bean
-	public AccountDao accountDao() {
-		return new AccountDao(dataSource());
-	}
 }
