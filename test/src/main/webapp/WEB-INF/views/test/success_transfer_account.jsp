@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>success find account</title>
+<title>success transfer</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>"/>
 </head>
 <body>
 
-	<h3>이체 성공</h3>
+	<h3>계좌 조회 성공</h3>
 	<label>E-mail : </label>${customerCommand.email}<br>
 	<label>이름 : </label>${customerCommand.name}<br>
 	<label>계좌번호 : </label>${accountCommand.accountNum}<br>

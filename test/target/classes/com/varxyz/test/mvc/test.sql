@@ -13,7 +13,7 @@ SELECT * FROM Customer;
 SELECT count(*) FROM Customer;
 
 DROP TABLE Customer;
-DELETE FROM Customer WHERE userId = "test3";
+DELETE FROM Customer WHERE userId = "test4";
 
 CREATE TABLE Account(
 	aid				BIGINT		PRIMARY KEY AUTO_INCREMENT,
@@ -32,7 +32,7 @@ SELECT * FROM Account;
 
 DROP TABLE Account;
 
-DELETE FROM Account WHERE userId = "test2";
+DELETE FROM Account WHERE userId = "test3";
 
 SELECT * FROM Account a INNER JOIN Customer c ON a.customerId = c.cid WHERE c.ssn = '880808-1234567';
 

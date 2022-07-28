@@ -19,7 +19,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/test/add_customer")
-	public String addAccount(Customer customer, Model model) {
+	public String addCustomer(Customer customer, Model model) {
 		CustomerService service = new CustomerServiceImpl();
 		
 		model.addAttribute(customer);
@@ -28,4 +28,5 @@ public class CustomerController {
 		CustomerService.context.close();
 		return "test/success_add_customer";
 	}
+	
 }

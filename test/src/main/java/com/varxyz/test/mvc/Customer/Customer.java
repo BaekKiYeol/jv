@@ -24,7 +24,8 @@ public class Customer {
 		super();
 	}
 	
-	public Customer(String userId) {
+	public Customer(String userId, String passwd) {
 		this.userId = userId;
+		this.passwd = passwd;
 	}
 }

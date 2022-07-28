@@ -1,11 +1,22 @@
 package com.varxyz.test.mvc.Account;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.login.AccountNotFoundException;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.mysql.cj.exceptions.ClosedOnExpiredPasswordException;
+import com.varxyz.test.mvc.RowMapper.AccountRowMapper;
 
 
 @Repository("accountDao")
@@ -31,17 +42,37 @@ public class AccountDao {
 	                account.getAccountNum(), account.getAccountType(), account.getBalance(), 
 	                0.0, account.getOverAmount());
 	       }
-		
 	}
 	
 	//계좌조회(아이디로)
 	public List<Account> findAccountById(String userId) {
-		 String sql = "SELECT a.aid, a.customerId, a.accountNum, a.accType, "
-			   		+ "a.balance, a.interestRate, a.overAmount, a.regDate "
-			   		+ "FROM Account a INNER JOIN Customer c "
-			   		+ "ON a.userId = c.cid WHERE c.userId = ?";
-		 
+		 String sql = "SELECT * FROM Account WHERE userId = ?";
 		 return jdbcTemplate.query(sql, new AccountRowMapper(), userId); 
-	
 	}
+	
+	//계좌조회(계좌번호로)
+		public List<Account> findAccountByAccountNum(String accountNum) {
+		String sql = "SELECT * FROM Account WHERE accountNum = ?";
+		return jdbcTemplate.query(sql, new AccountRowMapper(), accountNum); 
+		}
+	
+	//잔액 확인
+	public Account checkingBalance(String accountNum) {
+		 String sql = "SELECT * FROM Account WHERE accountNum = ?";
+		 return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Account>());
+	}
+	
+	//입금
+	public void depositAccount(String accountNum, double money) {
+		 String sql = "UPDATE Account SET balance WHERE accountNum = ?";
+		 jdbcTemplate.update(sql, checkingBalance(accountNum).getBalance()+money);
+	}
+	
+	//출금
+	public void withdrawAccount(String accountNum, double money) {
+		String sql = "UPDATE Account SET balance WHERE accountNum = ?";
+		jdbcTemplate.update(sql, checkingBalance(accountNum).getBalance()-money);
+	}
+	
+	
 }

@@ -15,4 +15,22 @@ public class AccountServiceImpl implements AccountService {
 	public List<Account> findAccountById(String userId) {
 		return dao.findAccountById(userId);
 	}
+
+	@Override
+	public void depositAccount(String accountNum, double money) {
+		return dao.depositAccount(accountNum, deposit);
+	}
+
+	@Override
+	public void transferAccount(Account account) {
+		
+	}
+
+	@Override
+	public String transferAccount(Account account, Account depositAccount, double amount) {
+		return null;
+	}
+
+	
+	
 }

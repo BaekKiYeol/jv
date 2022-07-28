@@ -8,4 +8,9 @@ public class CustomerServiceImpl implements CustomerService {
 	public void addCustomer(Customer customer) {
 		dao.addCustomer(customer);
 	}
+
+	@Override
+	public boolean login(String userId, String passwd) {
+		return false;
+	}
 }
