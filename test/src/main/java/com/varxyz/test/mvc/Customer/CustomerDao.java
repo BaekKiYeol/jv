@@ -52,7 +52,7 @@ public class CustomerDao {
 		Customer result = new Customer();
 		
 		try {
-			return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Customer>(), userId);
+			return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Customer>(Customer.class), userId);
 		} catch(EmptyResultDataAccessException e) {
 			return result;
 		}
