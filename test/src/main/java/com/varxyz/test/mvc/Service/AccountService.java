@@ -18,11 +18,11 @@ public interface AccountService {
 	
 	public List<Account> findAccountById(String userId);
 
-	String transferAccount(Account account, Account depositAccount, double amount);
-
 	public List<Account> findAccountByaccountNum(String accountNum);
 
 	public void depositAccount(String accountNum, double money);
 
+	public void withdrawAccount(String accountNum, double money);
 
+	
 }

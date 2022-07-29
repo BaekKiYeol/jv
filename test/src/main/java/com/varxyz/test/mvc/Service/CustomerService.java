@@ -14,5 +14,6 @@ public interface CustomerService {
 	
 	public void addCustomer(Customer customer);
 	
-	public boolean login(String userId, String passwd);
+//	public boolean login(String userId, String passwd);
+	public Customer login(String userId, String passwd);
 }

@@ -60,6 +60,7 @@ public class AccountDao {
 		String sql = "UPDATE Account SET balance WHERE accountNum = ?";
 		jdbcTemplate.update(sql, checkingBalance(accountNum).getBalance()-money);
 	}
+
 	
 	
 }

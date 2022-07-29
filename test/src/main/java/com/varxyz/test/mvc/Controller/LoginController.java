@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.varxyz.test.mvc.Customer.Customer;
 import com.varxyz.test.mvc.Service.CustomerService;
@@ -25,33 +27,20 @@ public class LoginController {
 	
 	@PostMapping("/test/login")
 	public String login(HttpServletRequest request, Customer customer, Model model, HttpSession session) {
-		session = request.getSession();
-		CustomerService service = new CustomerServiceImpl();
-		String userId = request.getParameter("userId");
-		String passwd = request.getParameter("passwd");
-		service.login(userId, passwd);
-		
-//		boolean result = service.login(userId, passwd);
-		
-//		//로그인 유효성 검사
-		try {
-			boolean result = service.login(userId, passwd);
-			if(!result) {
-				model.addAttribute("msg", "로그인 정보가 일치하지 않습니다.");
-				model.addAttribute("url", "/test/login");
-				return "test/error";
-			}
-		}catch(EmptyResultDataAccessException e) {
-			model.addAttribute("msg", "로그인 정보가 일치하지 않습니다.");
-			model.addAttribute("url", "/test/login");
-			return "test/error";
-		}finally {
-			CustomerService.context.close();
-		}
-		
-		//세션 정보 전달
-		session.setAttribute("userIdSession", customer.getUserId());
-		return "redirect:/test/mypage";
-	}
+//		session = request.getSession();
+		customerService.login(customer.getUserId(), customer.getPasswd());
+//		Customer result = customerService.login(userId, passwd);
+//		if(true) {
+//			return "test/main";
+//		} else {
+//			return "test/login";
+//		}
+
+//		//세션 정보 전달
+//		session.setAttribute("userIdSession", customer.getUserId());
+		return "test/main";
+//		
+//	}
 	
+	}
 }

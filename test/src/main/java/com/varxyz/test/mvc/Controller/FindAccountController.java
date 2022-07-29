@@ -26,7 +26,7 @@ public class FindAccountController {
 		List<Account> accountList = new ArrayList<>();
 		
 		AccountService service = new AccountServiceImpl();
-		accountList = service.findAccountById(account.getUserId());
+		accountList = service.findAccountById(account.getCustomer().getUserId());
 		
 		model.addAttribute("accountList", accountList);	
 		AccountService.context.close();

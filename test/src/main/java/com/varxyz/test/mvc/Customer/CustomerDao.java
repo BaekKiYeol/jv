@@ -1,6 +1,11 @@
 package com.varxyz.test.mvc.Customer;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -30,14 +35,41 @@ public class CustomerDao {
 	}
 	
 	//로그인
-	public boolean login(String userId, String passwd) {
+//	public boolean login(String userId, String passwd) {
+//		String sql = "SELECT userId, passwd FROM Customer WHERE userId = ?";
+//		Customer customer = new Customer();
+//		customer = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Customer>(), userId);
+//		
+//		if(userId == customer.getUserId() && passwd == customer.getPasswd()) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+//	}
+	
+	public Customer login(String userId, String passwd) {
 		String sql = "SELECT userId, passwd FROM Customer WHERE userId = ?";
-		Customer customer = new Customer();
-		customer = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Customer>(), userId);
-		if(userId == customer.getUserId() && passwd == customer.getPasswd()) {
-			return true;
-		}else {
-			return false;
+		Customer result = new Customer();
+		
+		try {
+			return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Customer>(), userId);
+		} catch(EmptyResultDataAccessException e) {
+			return result;
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ public class TransferController {
 	}
 	
 	@PostMapping("/test/transfer_account")
-	   public String transferAccount(HttpServletRequest request, Model model) {
+	   public String transferAccount(HttpServletRequest request, Model model, String account, double amount) {
 		
 		if(request.getParameter("Account").trim().isEmpty() ||
 		request.getParameter("passwd").trim().isEmpty() ||
@@ -31,11 +31,10 @@ public class TransferController {
 			return "test/error";
 		}
 		
-		
-	    
+		AccountService service = new AccountServiceImpl();
 	      
-	      service.transferAccount(account);
-	      AccountService.context.close();
+	    service.depositAccount(account, amount);
+	    AccountService.context.close();
 			return "test/success_transfer_account";
 	   }
 	}

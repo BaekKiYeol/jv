@@ -14,7 +14,7 @@ public class MainController {
 		//세션 정보 검사
 		if(session.getAttribute("userIdSession")==null) {
 			model.addAttribute("msg", "로그인 정보가 일치하지 않습니다.");
-			model.addAttribute("url", "/test/login");
+			model.addAttribute("url", "/test/test/login");
 			return "test/error";
 		}else {
 			session.getAttribute("userIdSession");

@@ -18,11 +18,11 @@
       	<form action="login" method="post">
         <div class="group">
           <label for="user" class="label">User Id</label>
-          <input id="user" type="text" class="input" required="required">
+          <input id="user" name="userId" type="text" class="input" required="required">
         </div>
         <div class="group">
           <label for="pass" class="label">Password</label>
-          <input id="pass" type="password" class="input" data-type="password" required="required">
+          <input id="pass" name="passwd" type="password" class="input" data-type="password" required="required">
         </div>
         <div class="group">
           <input id="check" type="checkbox" class="check" checked>
@@ -38,11 +38,11 @@
         <form action="add_customer" method="post">
         <div class="group">
           <label for="user" class="label">User Id</label>
-          <input id="user" type="text" class="input" name="userId" required="required">
+          <input id="user" type="text" class="input" required="required">
         </div>
         <div class="group">
           <label for="pass" class="label">Password</label>
-          <input id="pass" type="password" class="input" name="passwd" data-type="password" required="required">
+          <input id="pass" type="password" class="input" data-type="password" required="required">
         </div>
         <div class="group">
           <label for="pass" class="label">Name</label>
@@ -50,11 +50,11 @@
         </div>
         <div class="group">
           <label for="pass" class="label">Social Security number</label>
-          <input id="pass" type="text" class="input" name="ssn" required="required">
+          <input id="pass" type="text" class="input" name="ssn" oninput="autoHyphenSsn(this)" required="required">
         </div>
         <div class="group">
           <label for="pass" class="label">Phone Number</label>
-          <input id="pass" type="text" class="input" name="phone" required="required">
+          <input id="pass" type="text" class="input" name="phone" oninput="autoHyphenPhone(this)" required="required">
         </div>
         <div class="group">
           <label for="pass" class="label">Email Address</label>
@@ -68,6 +68,22 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+/* 전화번호 자동 하이픈 */
+const autoHyphenPhone = (target) => {
+	  target.value = target.value
+	  .replace(/[^0-9]/g, '')
+	  .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+	  }
+	  
+/* 주민번호 자동 하이픈 */
+const autoHyphenSsn = (target) => {
+	  target.value = target.value
+	  .replace(/[^0-9]/g, '')
+	  .replace(/^(\d{6})(\d{7})$/, `$1-$2`);
+	  } 
+</script>
 
 </body>
 </html>
