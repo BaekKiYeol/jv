@@ -5,25 +5,14 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.varxyz.test.mvc.Account.Account;
-import com.varxyz.test.mvc.Account.CheckingAccount;
-import com.varxyz.test.mvc.Account.SavingAccount;
 import com.varxyz.test.mvc.Customer.Customer;
 
-public class AccountRowMapper implements RowMapper<Account> {
+public class TransferRowMapper implements RowMapper<Account> {
 
 	@Override
 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Account account = null;
-		char accType = rs.getString("accType").charAt(0);
-		if(accType == 'C') {
-			account = new CheckingAccount();
-			CheckingAccount ca = (CheckingAccount)account;
-			ca.setOverdraftAmount(rs.getDouble("overAmount"));
-		}else {
-			account = new SavingAccount();
-			SavingAccount sa = (SavingAccount)account;
-			sa.setInterestRate(rs.getDouble("interestRate"));
-		}
+		Account account = new Account();
+		
 		account.setAid(rs.getLong("aid"));
 		account.setCustomer(new Customer(rs.getString("userId")));
 		account.getCustomer().setPasswd(rs.getString("passwd"));

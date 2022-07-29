@@ -13,19 +13,18 @@ import lombok.ToString;
 @ToString
 public class Customer {
 	private String userId;
-	private String email;
 	private String passwd;
 	private String name;
 	private String ssn;
 	private String phone;
+	private String email;
 	private Date regDate;
 	
 	public Customer() {
 		super();
 	}
 	
-	public Customer(String userId, String passwd) {
+	public Customer(String userId) {
 		this.userId = userId;
-		this.passwd = passwd;
 	}
 }

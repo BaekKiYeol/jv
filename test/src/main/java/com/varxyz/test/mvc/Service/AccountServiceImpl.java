@@ -18,18 +18,14 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void depositAccount(String accountNum, double money) {
-		return dao.depositAccount(accountNum, deposit);
+		return dao.depositAccount(accountNum, money);
 	}
 
 	@Override
-	public void transferAccount(Account account) {
-		
+	public List<Account> findAccountByaccountNum(String accountNum) {
+		return dao.findAccountByAccountNum(accountNum);
 	}
 
-	@Override
-	public String transferAccount(Account account, Account depositAccount, double amount) {
-		return null;
-	}
 
 	
 	

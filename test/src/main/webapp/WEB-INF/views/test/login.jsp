@@ -64,7 +64,6 @@
           <input type="submit" class="button" value="Sign Up">
         </div>
         </form>
-        <div class="hr"></div>
       </div>
     </div>
   </div>

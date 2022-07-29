@@ -1,13 +1,7 @@
 package com.varxyz.test.mvc.Account;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.security.auth.login.AccountNotFoundException;
+import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +9,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mysql.cj.exceptions.ClosedOnExpiredPasswordException;
 import com.varxyz.test.mvc.RowMapper.AccountRowMapper;
 
 
@@ -33,15 +26,9 @@ public class AccountDao {
 		String sql = "INSERT INTO Account (userId, accountNum, accType, balance, interestRate, overAmount)"
 				+ " VALUES (?, ?, ?, ?, ?, ?)";
 		System.out.println(account.getAccountType());
-	      if(account.getAccountType() == "S") {
-	          jdbcTemplate.update(sql, account.getUserId(),
-	                account.getAccountNum(), account.getAccountType(), account.getBalance(), 
-	                account.getInterestRate(), 0.0);   
-	       }else {
-	          jdbcTemplate.update(sql,account.getUserId(),
-	                account.getAccountNum(), account.getAccountType(), account.getBalance(), 
-	                0.0, account.getOverAmount());
-	       }
+		System.out.println(account.getCustomer().getUserId());
+		jdbcTemplate.update(sql, account.getCustomer().getUserId(), account.getAccountNum(),
+				account.getBalance(), account.getInterestRate(), account.getOverAmount());
 	}
 	
 	//계좌조회(아이디로)
