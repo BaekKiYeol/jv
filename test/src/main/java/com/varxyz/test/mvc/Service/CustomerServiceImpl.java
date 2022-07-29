@@ -11,6 +11,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public boolean login(String userId, String passwd) {
-		return false;
+		return dao.login(userId, passwd);
 	}
+
 }

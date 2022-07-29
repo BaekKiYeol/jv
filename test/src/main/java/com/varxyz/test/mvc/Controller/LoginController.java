@@ -27,11 +27,16 @@ public class LoginController {
 	public String login(HttpServletRequest request, Customer customer, Model model, HttpSession session) {
 		session = request.getSession();
 		CustomerService service = new CustomerServiceImpl();
+		String userId = request.getParameter("userId");
+		String passwd = request.getParameter("passwd");
+		service.login(userId, passwd);
 		
-		//로그인 유효성 검사
+//		boolean result = service.login(userId, passwd);
+		
+//		//로그인 유효성 검사
 		try {
-			boolean value = service.login(customer);
-			if(!value) {
+			boolean result = service.login(userId, passwd);
+			if(!result) {
 				model.addAttribute("msg", "로그인 정보가 일치하지 않습니다.");
 				model.addAttribute("url", "/test/login");
 				return "test/error";

@@ -13,6 +13,6 @@ public interface CustomerService {
 	CustomerDao dao = context.getBean("customerDao", CustomerDao.class);
 	
 	public void addCustomer(Customer customer);
-
-	public boolean login(Customer customer);
+	
+	public boolean login(String userId, String passwd);
 }
